@@ -27,6 +27,11 @@ class HabitActivity : AppCompatActivity() {
             edit_description.append(intent.getStringExtra("description"))
             edit_frequency.append(intent.getStringExtra("frequency"))
             edit_quantity.append(intent.getStringExtra("quantity"))
+            val type = intent.getStringExtra("type")
+            if (type == "Хорошая")
+                radio_good.isChecked = true
+            else
+                radio_bad.isChecked = true
             val priority = intent.getStringExtra("priority")
             if (priority == "Высокий")
                 spinner.setSelection(0)
@@ -41,7 +46,7 @@ class HabitActivity : AppCompatActivity() {
         val name = edit_name.text.toString()
         val description = edit_description.text.toString()
         val priority = spinner.selectedItem.toString()
-        val type = SelectTypeHabit
+        val type = checkTypeHabit()
         val frequency = edit_frequency.text.toString()
         val quantity = edit_quantity.text.toString()
         val isCorrectly = checkData(name, description, type, frequency, quantity)
@@ -71,13 +76,11 @@ class HabitActivity : AppCompatActivity() {
         finish()
     }
 
-    var SelectTypeHabit: String? = null
-
-    fun selectTypeHabit(view: View){
-        val id = view.id
-        if(id == radio_good.id)
-            SelectTypeHabit = radio_good.toString()
-        if(id == radio_bad.id)
-            SelectTypeHabit = radio_bad.toString()
+    fun checkTypeHabit(): String?{
+        if(radio_good.isChecked)
+            return radio_good.text.toString()
+        if(radio_bad.isChecked)
+            return radio_bad.text.toString()
+        return null;
     }
 }

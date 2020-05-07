@@ -15,7 +15,7 @@ class RecyclerAdapter: RecyclerView.Adapter <RecyclerAdapter.ViewHolder> () {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.habit_item, parent, false)
         return ViewHolder(view).listen { pos, type ->
             val habit = habits[pos]
-            if(parent.context is MainActivity){
+            if (parent.context is MainActivity){
                 (parent.context as MainActivity).editHabit(habit, pos)
             }
         }
@@ -26,7 +26,6 @@ class RecyclerAdapter: RecyclerView.Adapter <RecyclerAdapter.ViewHolder> () {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.habitName.text = habits[position].name
         holder.habitDescription.text = habits[position].description
-        holder.adapterPosition
     }
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {

@@ -25,10 +25,10 @@
         android:clickable="true"
         android:focusable="true"
         android:onClick="addHabit"
-        app:backgroundTint="#FFFFFF"
+        app:backgroundTint="@color/accent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="#000000"
+        app:rippleColor="@color/accent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
